@@ -1,7 +1,8 @@
 import grid from 'gridfs-stream';
 import mongoose from 'mongoose';
 
-const url = `${process.env.REACT_APP_BACKEND_URL}`;
+// const url = `http://localhost:8000`;
+const url = `https://designdropapi.onrender.com/`;
 
 
 let gfs, gridfsBucket;
