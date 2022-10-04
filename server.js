@@ -15,7 +15,7 @@ app.use(express.json());
 
 // app.use(cors());
 // app.use(cors({origin: ['https://designdrop.onrender.com']}));
-app.use(cors({origin:  '*'}))
+app.use(cors({origin:'*'}))
 // {origin: ['http://localhost:8888', 'http://127.0.0.1:8888']}
 // cors({origin: ['http://localhost:8888', 'http://127.0.0.1:8888']})
 
@@ -43,7 +43,7 @@ function headers (req, res, next) {
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use("/", Router);
-app.use("/", headers,Router);
+app.use("/",Router);
 
 
 const PORT = process.env.PORT || 8000;
