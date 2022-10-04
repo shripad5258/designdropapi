@@ -15,30 +15,47 @@ app.use(express.json());
 
 // app.use(cors());
 // app.use(cors({origin: ['https://designdrop.onrender.com']}));
-app.use(cors({origin:'https://designdrop.onrender.com/',credentials: true}))
+app.use(cors({origin:'*',credentials: true}))
 // {origin: ['http://localhost:8888', 'http://127.0.0.1:8888']}
 // cors({origin: ['http://localhost:8888', 'http://127.0.0.1:8888']})
 // { origin: allowedDomains, credentials: true }
 
 // HEADERS
-app.use(function (req, res, next) {
+// app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+//   // Website you wish to allow to connect
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
 
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', true);
 
-  // Pass to next layer of middleware
+//   // Pass to next layer of middleware
+//   next();
+// });
+
+
+
+app.use((request, response, next) => {
+  // res.setHeader("Access-Control-Allow-Origin", "https://yoursite.com"); remove this line
+  response.setHeader("Access-Control-Allow-Origin", "*");  //  add this
+  response.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   next();
 });
+
+
+
+
+
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
