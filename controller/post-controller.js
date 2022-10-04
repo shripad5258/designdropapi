@@ -112,8 +112,18 @@ export const deletePost = async (request, response) => {
 };
 
 ///GET ALL POSTS
+// res.setHeader('Access-Control-Allow-Origin', '*');
+// res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+// res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+// res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
 
 export const getAllPosts = async (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+  response.setHeader('Access-Control-Allow-Credentials', true); // If needed
+
   try {
     const posts = await Post.find({});
     response.json(posts);

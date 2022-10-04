@@ -15,10 +15,10 @@ app.use(express.json());
 
 // app.use(cors());
 // app.use(cors({origin: ['https://designdrop.onrender.com']}));
-app.use(cors({origin:'https://designdrop.onrender.com'}))
+app.use(cors({origin:'https://designdrop.onrender.com',credentials: true}))
 // {origin: ['http://localhost:8888', 'http://127.0.0.1:8888']}
 // cors({origin: ['http://localhost:8888', 'http://127.0.0.1:8888']})
-
+// { origin: allowedDomains, credentials: true }
 
 // HEADERS
 app.use(function (req, res, next) {
