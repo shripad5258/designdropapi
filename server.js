@@ -20,11 +20,11 @@ app.use(cors({origin:'*'}))
 // cors({origin: ['http://localhost:8888', 'http://127.0.0.1:8888']})
 
 
-// HEADER
-function headers (req, res, next) {
+// HEADERS
+app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', "*");
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -38,7 +38,7 @@ function headers (req, res, next) {
 
   // Pass to next layer of middleware
   next();
-}
+});
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
