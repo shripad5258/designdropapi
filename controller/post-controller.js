@@ -111,18 +111,12 @@ export const deletePost = async (request, response) => {
   }
 };
 
-///GET ALL POSTS
-// res.setHeader('Access-Control-Allow-Origin', '*');
-// res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-// res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-// res.setHeader('Access-Control-Allow-Credentials', true); // If needed
-
 
 export const getAllPosts = async (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-  response.setHeader('Access-Control-Allow-Credentials', true); // If needed
+  response.setHeader('Access-Control-Allow-Methods', 'GET'); 
+  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
+  response.setHeader('Access-Control-Allow-Credentials', true); 
 
   try {
     const posts = await Post.find({});
@@ -136,6 +130,7 @@ export const getAllPosts = async (request, response) => {
 //GET ONE POST
 
 export const getPost = async (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
   try {
     const post = await Post.findById(request.params.id);
     response.status(200).json(post);
@@ -145,10 +140,12 @@ export const getPost = async (request, response) => {
 };
 
 const getPost1 = async (userId) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
   return await Post.find({ createdBy: userId });
 };
 
 export const getPostByUserID = async (request, response) => {
+  response.setHeader('Access-Control-Allow-Origin', '*');
   try {
     // const result = await getPost1(request.params.id);
     const result = await Post.find({ createdBy: request.params.id });
