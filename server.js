@@ -27,7 +27,7 @@ app.use(cors({ origin: "*", credentials: true }));
 //   );
 
 //   // Request headers you wish to allow
-//   res.setHeader(
+  // res.setHeader(
 //     "Access-Control-Allow-Headers",
 //     "X-Requested-With,content-type"
 //   );
